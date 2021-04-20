@@ -42,3 +42,7 @@ demo-app是应用层，说是应用层，实际上是api层的具体实现层，
 #### demo-basic
 
 基础设施层，对于数据库dal，mapper等，mq的发送，redis操作，kafka操作，第三方接口操作全部在这一层
+
+#### demo-client
+
+对外接口的sdk,有时候也不需要
