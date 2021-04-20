@@ -7,8 +7,8 @@
     <modules>
         <module>demo-api</module>
         <module>demo-app</module>
-        <module>demo-domain</module>
         <module>demo-basic</module>
+        <module>demo-domain</module>
     </modules>
 
     <parent>
@@ -22,11 +22,12 @@
     <artifactId>java-layer-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>java-layer-demo</name>
-    <description>java项目分层架构</description>
+    <description>java项目分层架构模板demo</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -46,4 +47,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
