@@ -33,7 +33,7 @@ cookie权限的访问都应该放在这里。包括接口的过滤器，handler�
 
 #### demo-app
 
-demo-app可以是多个，比如说我们一个应用，有后端server端，有ops端，那么app就是多个，这个app也是主运行main的入口
+demo-app是应用层，说是应用层，实际上是api层的具体实现层，他会包括mq监听，api监听等，但是真正的业务逻辑，是会放在领域层 
 
 #### demo-domain
 

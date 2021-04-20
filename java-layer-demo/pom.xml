@@ -9,6 +9,7 @@
         <module>demo-app</module>
         <module>demo-basic</module>
         <module>demo-domain</module>
+        <module>demo-client</module>
     </modules>
 
     <parent>
