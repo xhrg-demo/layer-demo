@@ -46,3 +46,7 @@ demo-app是应用层，说是应用层，实际上是api层的具体实现层，
 #### demo-client
 
 对外接口的sdk,有时候也不需要
+
+#### demo-web
+
+存放web静态页面的项目
