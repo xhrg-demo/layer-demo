@@ -13,4 +13,11 @@
     <artifactId>demo-api</artifactId>
     <name>demo-api</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.xhrg.demo</groupId>
+            <artifactId>demo-app</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

@@ -63,6 +63,21 @@
                 <artifactId>demo-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.xhrg.demo</groupId>
+                <artifactId>demo-basic</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xhrg.demo</groupId>
+                <artifactId>demo-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xhrg.demo</groupId>
+                <artifactId>demo-app</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
