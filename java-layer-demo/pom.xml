@@ -22,6 +22,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot-dependencies.version>2.4.5</spring-boot-dependencies.version>
     </properties>
 
     <dependencies>
@@ -38,20 +40,38 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <!--有了dependencyManagement, 放在这里的依赖版本会被管理，你需要的依赖就不用再加班班号了-->
     <dependencyManagement>
         <dependencies>
+            <!--spring-boot-dependencies中定义了大量的spring相关依赖-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.4.5</version>
+                <version>${spring-boot-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
+        <pluginManagement>
+            <plugins>
+                <!--其实spring-boot-dependencies中也定义了spring-boot-maven-plugin的版本-->
+                <!--如果我用parent的方式，则会集成这个build的版本，但是如果是依赖的话则不能，所以这里我们再引用以下，但是版本用他的-->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot-dependencies.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -59,5 +79,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
