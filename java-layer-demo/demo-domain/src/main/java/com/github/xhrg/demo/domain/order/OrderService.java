@@ -11,9 +11,10 @@ public class OrderService {
     private OrderMapper orderMapper;
 
     public String query() {
-        String order = orderMapper.query();
+        Object order = orderMapper.getAll();
         String resultOrder = order + "domain层加了业务进去";
-        return resultOrder;
+        Object order1 = orderMapper.selectById(1);
+        return resultOrder + order1;
     }
 
 }

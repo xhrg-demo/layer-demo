@@ -1,20 +1,11 @@
 package com.github.xhrg.demo.basic.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-
-@TableName("orders")
-public class OrderModel {
+public class PersonModel {
 
     private Integer id;
+
     private String name;
 
-    @Override
-    public String toString() {
-        return "OrderModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 
     public Integer getId() {
         return id;
