@@ -1,6 +1,8 @@
 package com.github.xhrg.demo.api.http;
 
 import com.github.xhrg.demo.app.facade.OrderFacade;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class HttpOrderAction {
     private OrderFacade orderFacade;
 
     @RequestMapping("/query")
+    @ApiOperation(value = "查询订单", notes = "通过Id查询订单")
+    @ApiImplicitParam(name = "orderId", value = "订单编号", required = true, dataType = "String")
     public Object query() {
         log.info("order/query");
         return orderFacade.query();

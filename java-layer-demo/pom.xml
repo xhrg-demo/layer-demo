@@ -65,6 +65,17 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
+        <!--swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.5.0</version>
+        </dependency>
     </dependencies>
 
     <!--有了dependencyManagement, 放在这里的依赖版本会被管理，你需要的依赖就不用再加班班号了-->
