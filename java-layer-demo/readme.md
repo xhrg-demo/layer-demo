@@ -1,7 +1,6 @@
 ## java-layer-demo说明
 
 参考
-
 ```
 /用户接口层
   /webapi
@@ -28,12 +27,21 @@
 
 #### demo-api
 
-这个放接口，这里的接口可能是dubbo接口，http接口，springmvc接口，grpc接口，一般接口对session
-cookie权限的访问都应该放在这里。包括接口的过滤器，handler等
+一般接口对session,cookie权限的访问都应该放在这里。包括接口的过滤器，handler等, 这里的接口可能
+* dubbo接口
+* http接口
+* springmvc接口
+* grpc接口
+* springmvc过滤器
 
 #### demo-app
 
 demo-app是应用层，说是应用层，实际上是api层的具体实现层，他会包括mq监听，api监听等，但是真正的业务逻辑，是会放在领域层 
+
+为何需要app层
+* 比如说，我有一个http接口，这个接口需要获取2个模块的数据，如果我在domain层进行互相调用显然是不合适的，所以我就需要在app层进行聚合
+普通的业务一般是controller->service->dao，这种做法后来早就演进出来了controller->biz->service->dao这样，而app层并不和biz层等价，但是
+把业务中间分为2层还是有意义的。
 
 #### demo-domain
 
