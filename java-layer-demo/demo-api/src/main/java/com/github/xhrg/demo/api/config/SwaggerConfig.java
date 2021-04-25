@@ -1,6 +1,7 @@
 package com.github.xhrg.demo.api.config;
 
 import io.swagger.models.Contact;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -15,6 +16,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
+
+    @Value("${spring.application.name}")
+    private String name;
+
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -28,7 +33,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("layer-demo")
+                .title(name)
                 .contact(new springfox.documentation.service.Contact("张三", "https://github.com/xhrg-demo/layer-demo", "634789257@qq.com"))
                 .version("1.0")
                 .description("API 描述")

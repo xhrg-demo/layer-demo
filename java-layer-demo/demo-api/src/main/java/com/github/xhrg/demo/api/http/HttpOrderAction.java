@@ -20,7 +20,7 @@ public class HttpOrderAction {
 
     @RequestMapping("/query")
     @ApiOperation(value = "查询订单", notes = "通过Id查询订单")
-    @ApiImplicitParam(name = "orderId", value = "订单编号", required = true, dataType = "String")
+    @ApiImplicitParam(name = "orderId", value = "订单编号", required = true, dataType = "string")
     public Object query() {
         log.info("order/query");
         return orderFacade.query();
