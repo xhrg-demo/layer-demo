@@ -33,9 +33,9 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title(name)
-                .contact(new springfox.documentation.service.Contact("张三", "https://github.com/xhrg-demo/layer-demo", "634789257@qq.com"))
+                .contact(new springfox.documentation.service.Contact("", "", ""))
                 .version("1.0")
-                .description("API 描述")
+                .description("API文档")
                 .build();
     }
 }
