@@ -1,6 +1,8 @@
 package com.github.xhrg.demo.api.config;
 
 import com.github.xhrg.demo.basic.exception.BizException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -17,8 +19,11 @@ import javax.servlet.http.HttpServletRequest;
  * 说明：
  * 该类目前有2个作用，1是beforeBodyWrite，2是ExceptionHandler，这2个可以分开，也可以配置到一个接口中。
  */
-@ControllerAdvice
+//只是对这个包路径下的接口进行环绕，比如swagger的接口不会经过
+@ControllerAdvice("com.github.xhrg.demo")
 public class MyResponseBodyAdvice implements ResponseBodyAdvice<Object> {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -29,11 +34,13 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
                                   Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request,
                                   ServerHttpResponse response) {
+
         if (body instanceof Response) {
             return body;
         }
         Response resp = new Response();
         resp.setCode(ResponseState.SUCCESS_CODE.code());
+        resp.setMsg(ResponseState.SUCCESS_CODE.state());
         resp.setData(body);
         return resp;
     }
@@ -43,11 +50,18 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     public Object handleException(HttpServletRequest request, Exception ex) {
         Response resp = new Response();
         resp.setCode(ResponseState.SYS_ERROR_CODE.code());
+        resp.setMsg(ResponseState.SYS_ERROR_CODE.state());
         resp.setMsg(ex.getMessage());
         //2是不需要处理的异常，也就是业务异常。
         if (ex instanceof BizException) {
             resp.setCode(ResponseState.BIZ_ERROR_CODE.code());
+            resp.setMsg(ResponseState.BIZ_ERROR_CODE.state());
+            BizException bizException = (BizException) ex;
+            if (bizException.getCode() > 0) {
+                resp.setCode(bizException.getCode());
+            }
         } else {
+            logger.error("handlerException, exception is ", ex);
             ex.printStackTrace();
         }
         return resp;

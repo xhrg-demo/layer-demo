@@ -2,11 +2,9 @@ package com.github.xhrg.demo.api.config;
 
 public class Response {
 
-    //状态代码。1=正常。2=异常不需要处理,3=异常需要处理。
     private int code;
     private Object data;
     private String msg;
-
 
     public int getCode() {
         return code;
