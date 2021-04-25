@@ -7,6 +7,7 @@ public class Response {
     private Object data;
     private String msg;
 
+
     public int getCode() {
         return code;
     }
