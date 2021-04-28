@@ -91,7 +91,11 @@
             <artifactId>disruptor</artifactId>
             <version>3.4.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.76</version>
+        </dependency>
     </dependencies>
 
     <!--有了dependencyManagement, 放在这里的依赖版本会被管理，你需要的依赖就不用再加班班号了-->
