@@ -39,8 +39,7 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice<Object> {
             return body;
         }
         Response resp = new Response();
-        resp.setCode(ResponseState.SUCCESS_CODE.code());
-        resp.setMsg(ResponseState.SUCCESS_CODE.state());
+        resp.setCode(Response.success);
         resp.setData(body);
         return resp;
     }
@@ -49,13 +48,11 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice<Object> {
     @ResponseBody
     public Object handleException(HttpServletRequest request, Exception ex) {
         Response resp = new Response();
-        resp.setCode(ResponseState.SYS_ERROR_CODE.code());
-        resp.setMsg(ResponseState.SYS_ERROR_CODE.state());
+        resp.setCode(Response.systemError);
         resp.setMsg(ex.getMessage());
         //2是不需要处理的异常，也就是业务异常。
         if (ex instanceof BizException) {
-            resp.setCode(ResponseState.BIZ_ERROR_CODE.code());
-            resp.setMsg(ResponseState.BIZ_ERROR_CODE.state());
+            resp.setCode(Response.bizError);
             BizException bizException = (BizException) ex;
             if (bizException.getCode() > 0) {
                 resp.setCode(bizException.getCode());
