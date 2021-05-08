@@ -11,5 +11,6 @@
 ##子项目的gitignore
 *.gitignore
 
+*.class
 
-
+*/target
