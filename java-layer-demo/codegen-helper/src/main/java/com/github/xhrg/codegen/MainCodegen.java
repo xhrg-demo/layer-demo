@@ -1,5 +1,11 @@
 package com.github.xhrg.codegen;
 
+import org.apache.commons.io.FileUtils;
+import org.springframework.util.StringUtils;
+
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+
 public class MainCodegen {
 
     //组织名称
@@ -15,10 +21,24 @@ public class MainCodegen {
     public static String demoPackageName = "com.github.xhrg.demo";
 
     public static void main(String[] args) {
-        System.out.println(System.getProperty("user.dir"));
+        String outPath = "~/temp";
+        System.out.println(demoPath());
+        writeFile(outPath + "/a.text", "a");
     }
 
-    private String genDemoPath() {
-        return "";
+    private static void writeFile(String file, String content) {
+        try {
+            FileUtils.writeStringToFile(new File(file), content, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String demoPath() {
+        String demoDir = System.getProperty("DEMO-DIR");
+        if (StringUtils.hasLength(demoDir)) {
+            return demoDir;
+        }
+        return System.getProperty("user.dir");
     }
 }
