@@ -113,6 +113,10 @@
             <artifactId>commons-io</artifactId>
             <version>2.8.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <!--有了dependencyManagement, 放在这里的依赖版本会被管理，你需要的依赖就不用再加班班号了-->

@@ -5,6 +5,10 @@ import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 public class MainCodegen {
 
@@ -20,15 +24,17 @@ public class MainCodegen {
     //原始项目的包路径
     public static String demoPackageName = "com.github.xhrg.demo";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Stream<Path> l = Files.list(Paths.get(demoPath()));
+        System.out.println(l);
         String outPath = "~/temp";
         System.out.println(demoPath());
         writeFile(outPath + "/a.text", "a");
     }
 
-    private static void writeFile(String file, String content) {
+    private static void writeFile(String file, String data) {
         try {
-            FileUtils.writeStringToFile(new File(file), content, StandardCharsets.UTF_8);
+            FileUtils.writeStringToFile(new File(file), data, StandardCharsets.UTF_8);
         } catch (Exception e) {
             e.printStackTrace();
         }
